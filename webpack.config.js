@@ -10,12 +10,33 @@ var config = {
         path: BUILD_DIR,
         filename: 'bundle.js'
     },
-     module: {
-        loaders: [
+    module: {
+        rules: [
             {
-                test: /\.js?/,
-                include: APP_DIR,
-                loader: 'babel-loader'
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    'file-loader'
+                ]
+            }
+            ,
+            {
+                test: /\.jsx?/,
+                use: [
+                    'babel-loader'
+                ]
             }
         ]
     }

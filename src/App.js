@@ -3,6 +3,9 @@ import { mbStyle, mtStyle, nbStyle } from './styles.js';
 import './font-awesome/css/font-awesome.min.css';
 import mainLogo from './logoWhite.png';
 import './App.css';
+require ('./script.js');
+
+
 
 
 

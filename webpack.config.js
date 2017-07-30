@@ -33,7 +33,7 @@ var config = {
             }
             ,
             {
-                test: /\.jsx?/,
+                test: /\.js?/,
                 use: [
                     'babel-loader'
                 ]

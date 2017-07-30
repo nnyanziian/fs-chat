@@ -18,9 +18,12 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "express": "^4.15.3",
+    "jquery": "^3.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^4.1.2",
+    "socket.io": "^2.0.3",
+    "socket.io-client": "^2.0.3",
     "webpack": "^3.4.1"
   },
   "devDependencies": {

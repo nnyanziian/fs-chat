@@ -6,7 +6,6 @@ export const mbStyle = {
     left: '0',
     width: '100%',
     minWidth: '300px',
-    backgroundColor: '#fff',
     whosTyping: {
         backgroundColor: '#f7f7f7',
         display: 'block',
@@ -23,7 +22,8 @@ export const mbStyle = {
         clear: 'both',
         border: '2px solid #444444',
         overflow: 'auto',
-        borderRadius: '25px'
+        borderRadius: '25px',
+        backgroundColor:'#fff'
     },
     input: {
         height: '50px',
@@ -49,9 +49,9 @@ export const mbStyle = {
 
 export const mtStyle = {
     position: 'fixed',
-    bottom: '90px',
-    backgroundColor: '#f7f7f7',
-    height: '75vh',
+    top: '50px',
+    backgroundColor: '#ccc',
+    height: '80vh',
     width: '100%',
     overflow: 'auto',
     padding: '20px',
@@ -89,6 +89,14 @@ export const nbStyle = {
         height: '30px',
         verticalAlign: 'middle'
 
+    },
+    typing:{
+        fontSize:'12px',
+        float:'left',
+        p:{
+            lineHeight:'50px',
+            verticalAlign:'middle'
+        }
     },
     accActive:{
         float:'right',

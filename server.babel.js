@@ -14,12 +14,12 @@ app.get('/', function (req, res) {
 });
 
 io.on('connection', function (socket) {
-    console.log('a user has connected');
-    io.emit('chat message', "user connected");
-    // socket.on('disconnect', function(msg){
-    //  console.log('user disconnected');
-    //  io.emit('chat message', "User Disconnected");
-    // });
+   // console.log('a user has connected');
+   //io.emit('chat message', "user connected");
+   socket.on('disconnect', function(msg){
+      //console.log('user disconnected');
+  //io.emit('chat notification', msg);
+   });
 
     //get emitted chat msg
     socket.broadcast.emit('chat message');
@@ -39,6 +39,12 @@ io.on('connection', function (socket) {
     socket.on('chat out', function () {
        
         io.emit('chat out');
+    });
+
+        socket.broadcast.emit('chat typing');
+    socket.on('chat typing', function (msg) {
+       
+        io.emit('chat typing', msg);
     });
 
 });

@@ -1,8 +1,8 @@
 {
-  "name": "webr",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "fs-chat",
+  "version": "0.0.1",
+  "description": "chatting aplication",
+  "main": "server.js",
   "scripts": {
     "webpack-watch": "webpack -d --watch",
     "express-server": "nodemon server",

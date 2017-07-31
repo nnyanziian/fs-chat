@@ -15,15 +15,19 @@
     }
   }
   export function login() {
+   
     var fsChatUsername = prompt("Please Enter your Username", "Anonymus");
     if (fsChatUsername == null || fsChatUsername == "" || fsChatUsername.length > 20) {
       login();
       return false;
     }
     else {
-      document.cookie = "fsChatUsername=" + fsChatUsername;
+      document.cookie = 'fsChatUsername' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+              document.cookie = "fsChatUsername=" + fsChatUsername;
       alert('Logged In as: ' + fsChatUsername);
       console.log('User Logged In as: ' + fsChatUsername);
+     
+
 
     }
   }

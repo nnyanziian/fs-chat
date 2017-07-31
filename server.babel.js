@@ -50,5 +50,5 @@ io.on('connection', function (socket) {
 });
 
 http.listen(3000, function() {
-  console.log('done at 3000');
+  console.log(':3000');
 });

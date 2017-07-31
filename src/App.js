@@ -4,8 +4,10 @@ import './font-awesome/css/font-awesome.min.css';
 import mainLogo from './logoWhite.png';
 import './App.css';
 import $ from "jquery";
+import {checkIfloggedIn} from './script.js';
 const io = require('socket.io-client');
 require('./script.js');
+
 const socket = io();
 
 
@@ -32,14 +34,20 @@ class MessageBar extends Component {
       }
       else {
         const msg = {
-          sender:fsUsername,
-          content:$('#m').val()
+          sender: fsUsername,
+          content: $('#m').val()
         };
-        socket.emit('chat message', msg);
+        if (checkIfloggedIn()) {
+                  socket.emit('chat message', msg);
         //console.log('chat message :' + fsUsername + ': ' + $('#m').val());
         $('#m').val('');
         $('#m:focus').blur();
         return false;
+        }
+        else {
+          location.reload();
+        }
+
       }
 
     });
@@ -100,10 +108,10 @@ class NavBar extends Component {
       }));
     }
 
-    
+
   }
   componentDidUpdate() {
-    
+
 
   }
   render() {
@@ -233,17 +241,17 @@ class App extends Component {
         console.log('Got ya!');
       }
       else {
-        let styledd ='';
+        let styledd = '';
         let senderr = '';
-        if(msg.sender==fsUsername){
-           styledd ='msgRight';
-            senderr ="You";
+        if (msg.sender == fsUsername) {
+          styledd = 'msgRight';
+          senderr = "You";
         }
-        else{
-          styledd ='msgleft';
-          senderr =msg.sender;
+        else {
+          styledd = 'msgleft';
+          senderr = msg.sender;
         }
-        $('#mtList').append($('<li class='+styledd+'>').text(senderr+ ': '+msg.content));
+        $('#mtList').append($('<li class=' + styledd + '>').text(senderr + ': ' + msg.content));
         snd.play();
       }
 

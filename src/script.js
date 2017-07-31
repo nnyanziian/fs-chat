@@ -4,7 +4,7 @@
     else {
       login();
     }
-  function checkIfloggedIn() {
+  export function checkIfloggedIn() {
     var username = document.cookie.replace(/(?:(?:^|.*;\s*)fsChatUsername\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     if (username == null || username == "") {
       return false;
@@ -14,7 +14,7 @@
 
     }
   }
-  function login() {
+  export function login() {
     var fsChatUsername = prompt("Please Enter your Username", "Anonymus");
     if (fsChatUsername == null || fsChatUsername == "" || fsChatUsername.length > 20) {
       login();

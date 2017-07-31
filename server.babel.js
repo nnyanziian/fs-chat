@@ -16,10 +16,10 @@ app.get('/', function (req, res) {
 io.on('connection', function (socket) {
    // console.log('a user has connected');
    //io.emit('chat message', "user connected");
-   socket.on('disconnect', function(msg){
+  // socket.on('disconnect', function(msg){
       //console.log('user disconnected');
   //io.emit('chat notification', msg);
-   });
+ //  });
 
     //get emitted chat msg
     socket.broadcast.emit('chat message');
@@ -45,6 +45,12 @@ io.on('connection', function (socket) {
     socket.on('chat typing', function (msg) {
        
         io.emit('chat typing', msg);
+    });
+
+        socket.broadcast.emit('chat notification');
+    socket.on('chat notification', function (msg) {
+        console.log('message: ' + msg);
+        io.emit('chat notification', msg);
     });
 
 });

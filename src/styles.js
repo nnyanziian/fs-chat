@@ -1,3 +1,4 @@
+const primaryColor = '#ffca09';
 
 export const mbStyle = {
     padding: '10px',
@@ -53,21 +54,21 @@ export const sbStyle = {
     width: '100%',
     zIndex: '2000',
     display: 'block',
-    left:'0px',
-    overflow:'hidden',
+    left: '0px',
+    overflow: 'hidden',
     side: {
         width: '50%',
         backgroundColor: '#fff',
         height: '100%',
-        float:'left'
+        float: 'left'
     },
-        close: {
+    close: {
         width: '50%',
         height: '100%',
-        float:'left'
+        float: 'left'
     },
     off: {
-        left:'-100%',
+        left: '-100%',
         display: 'block',
         position: 'fixed',
         backgroundColor: 'rgba(0,0,0,0.5)',
@@ -104,6 +105,36 @@ export const mtStyle = {
     }
 
 };
+export const notify = {
+    width: '30%',
+    backgroundColor: '#fff',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    position: 'fixed',
+    top: '60px',
+    right: '10px',
+    zIndex: '1000',
+    boxShadow: '0px 0px 20px 0px rgba(0,0,0,0.75)',
+    display:'block',
+    off:{
+        display:'none',
+    },
+    close: {
+        position: 'absolute',
+        top: '5px',
+        right: '5px',
+        color: primaryColor
+    },
+    title: {
+        fontSize: '16px',
+        padding: '10px 10px 5px 10px'
+
+    },
+    content: {
+        color: '#787878',
+        padding: '5px 10px 10px 10px'
+    }
+}
 
 export const nbStyle = {
     width: '100%',

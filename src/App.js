@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { mbStyle, mtStyle, nbStyle, sbStyle } from './styles.js';
+import { notify, mbStyle, mtStyle, nbStyle, sbStyle } from './styles.js';
 import './font-awesome/css/font-awesome.min.css';
 import mainLogo from './logoWhite.png';
 import './App.css';
 import $ from "jquery";
-import {checkIfloggedIn} from './script.js';
+import { checkIfloggedIn } from './script.js';
 const io = require('socket.io-client');
 require('./script.js');
 
@@ -38,11 +38,11 @@ class MessageBar extends Component {
           content: $('#m').val()
         };
         if (checkIfloggedIn()) {
-                  socket.emit('chat message', msg);
-        //console.log('chat message :' + fsUsername + ': ' + $('#m').val());
-        $('#m').val('');
-        $('#m:focus').blur();
-        return false;
+          socket.emit('chat message', msg);
+          //console.log('chat message :' + fsUsername + ': ' + $('#m').val());
+          $('#m').val('');
+          $('#m:focus').blur();
+          return false;
         }
         else {
           location.reload();
@@ -190,6 +190,49 @@ class ListItem extends Component {
   }
 }
 
+class Notification extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: false,
+      data: {
+        title: "",
+        content: "",
+      },
+      style: notify.off
+
+    };
+  }
+  componentDidMount() {
+    const compo = this;
+    socket.on('chat not', function (msg) {
+      console.log(JSON.stringify(msg));
+      compo.setState({
+        active: true,
+        style: notify,
+       data: {
+          title: msg.sender,
+         content: msg.content
+        }
+      });
+
+    });
+  }
+  dismis() {
+    $('#notification').animate({ right: '-35%' }, 100);
+    $('#notification').fadeOut('50');
+  }
+  render() {
+    return (
+      <div id="notification" style={this.state.style}>
+        <a onClick={this.dismis} style={notify.close} href="#"><span className="fa fa-close"></span></a>
+        <h4 style={notify.title}>{this.state.data.title}</h4>
+        <p style={notify.content} >{this.state.data.content}</p>
+      </div>
+    );
+  }
+}
+
 class MessageThread extends Component {
 
   componentDidMount() {
@@ -219,7 +262,11 @@ class App extends Component {
     $('#signOut').click(function (e) {
       e.preventDefault();
       document.cookie = 'fsChatUsername' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      socket.emit('chat notification', fsUsername + " has Logged out");
+      const msg = {
+        sender: fsUsername,
+        content: 'has left'
+      };
+      socket.emit('chat not', msg);
       location.reload();
     });
 
@@ -227,18 +274,12 @@ class App extends Component {
 
 
     socket.on('connection', function () {
-      socket.emit('chat notification', fsUsername + " has Connected");
 
-
-
-
-
-
-    });
+  });
     var snd = new Audio("/notify.mp3");
     socket.on('chat message', function (msg = '') {
       if (msg.length == 0) {
-        console.log('Got ya!');
+        //console.log('Got ya!');
       }
       else {
         let styledd = '';
@@ -270,6 +311,7 @@ class App extends Component {
       <div>
 
         <NavBar />
+        <Notification />
         <MessageThread />
         <MessageBar />
 

@@ -1,3 +1,4 @@
+import { StaticRouter } from 'react-router';
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -6,12 +7,14 @@ var io = require('socket.io')(http);
 
 
 
-app.use(express.static(path.join(__dirname, 'public')));
-//app.use('/', express.static('public'));
-app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '/index.html'));
-    
-});
+
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname+'/public'));
+
+//app.get('/about', function(req, res){
+   // res.send('Your on '+res);
+//});
+
 
 io.on('connection', function (socket) {
    // console.log('a user has connected');

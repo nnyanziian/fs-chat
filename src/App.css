@@ -24,8 +24,8 @@ body {
             border-radius:25px;
             border:1px solid #ccc;
 }
-.sideBars{
-transition: 100ms;
+.sideBars, #notification{
+transition: all 200ms ease-in-out;
 }
 .msgRight{
   float: right !important;

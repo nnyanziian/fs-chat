@@ -106,7 +106,8 @@ export const mtStyle = {
 
 };
 export const notify = {
-    width: '30%',
+    width: 'auto',
+    minWidth: '200px',
     backgroundColor: '#fff',
     border: '1px solid #ccc',
     borderRadius: '5px',
@@ -115,9 +116,20 @@ export const notify = {
     right: '10px',
     zIndex: '1000',
     boxShadow: '0px 0px 20px 0px rgba(0,0,0,0.75)',
-    display:'block',
-    off:{
-        display:'none',
+    display: 'block',
+    break: {
+        clear: 'both',
+    },
+    off: {
+        display: 'none',
+        backgroundColor: '#fff',
+        border: '1px solid #ccc',
+        borderRadius: '5px',
+        position: 'fixed',
+        top: '60px',
+        right: '-20px',
+        zIndex: '1000',
+        boxShadow: '0px 0px 20px 0px rgba(0,0,0,0.75)',
     },
     close: {
         position: 'absolute',

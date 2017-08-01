@@ -204,28 +204,45 @@ class Notification extends Component {
     };
   }
   componentDidMount() {
+    var fsUsername = document.cookie.replace(/(?:(?:^|.*;\s*)fsChatUsername\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     const compo = this;
     socket.on('chat not', function (msg) {
-      console.log(JSON.stringify(msg));
-      compo.setState({
-        active: true,
-        style: notify,
-       data: {
-          title: msg.sender,
-         content: msg.content
-        }
-      });
+      if (msg.sender != fsUsername) {
+        compo.setState({
+          active: true,
+          style: notify,
+          data: {
+            title: msg.sender,
+            content: msg.content
+          }
+        });
+
+        setTimeout(function () {
+          //console.log("ggg");
+          compo.dismis();
+        }, 5000);
+      }
 
     });
   }
   dismis() {
-    $('#notification').animate({ right: '-35%' }, 100);
-    $('#notification').fadeOut('50');
+    //$('#notification').animate({ right: '-35%' }, 100);
+    //$('#notification').fadeOut('50');
+    this.setState({
+      active: false,
+      style: notify.off,
+      data: {
+        title: "",
+        content: ""
+      }
+    })
+
   }
   render() {
     return (
       <div id="notification" style={this.state.style}>
         <a onClick={this.dismis} style={notify.close} href="#"><span className="fa fa-close"></span></a>
+        <br style={notify.break} />
         <h4 style={notify.title}>{this.state.data.title}</h4>
         <p style={notify.content} >{this.state.data.content}</p>
       </div>
@@ -275,7 +292,7 @@ class App extends Component {
 
     socket.on('connection', function () {
 
-  });
+    });
     var snd = new Audio("/notify.mp3");
     socket.on('chat message', function (msg = '') {
       if (msg.length == 0) {

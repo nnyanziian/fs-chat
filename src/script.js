@@ -1,4 +1,5 @@
-    if (checkIfloggedIn()) {
+const io = require('socket.io-client');    
+if (checkIfloggedIn()) {
 
     }
     else {
@@ -24,7 +25,12 @@
     else {
       document.cookie = 'fsChatUsername' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
               document.cookie = "fsChatUsername=" + fsChatUsername;
-      
+      const msg = {
+        sender: fsChatUsername,
+        content: 'is online'
+      };
+      const socket = io();
+      socket.emit('chat not', msg);
       console.log('User Logged In as: ' + fsChatUsername);
      
 

@@ -35,7 +35,24 @@ transition: 100ms;
   float: left !important;
    border-radius: 0 25px 25px 0 !important;
 }
-        
+
+
+#mt::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+#mt::-webkit-scrollbar-track {
+    background-color:rgba(0,0,0,0.3);
+}
+ 
+#mt::-webkit-scrollbar-thumb {
+  background-color :#787878;
+  outline: 1px solid #000;
+}   
+
+
+
+
 @media screen and (max-width: 500x) {
 body{
   margin: 50px, 0, 0, 0;

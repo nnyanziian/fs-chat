@@ -291,7 +291,7 @@ class App extends Component {
 
 
     socket.on('connection', function () {
-
+      //show that user is online
     });
     var snd = new Audio("/notify.mp3");
     socket.on('chat message', function (msg = '') {
@@ -304,13 +304,19 @@ class App extends Component {
         if (msg.sender == fsUsername) {
           styledd = 'msgRight';
           senderr = "You";
+          console.log('Dont play');
         }
         else {
+          console.log('play');
+          snd.play();
           styledd = 'msgleft';
           senderr = msg.sender;
         }
         $('#mtList').append($('<li class=' + styledd + '>').text(senderr + ': ' + msg.content));
-        snd.play();
+       
+          
+        
+
       }
 
 

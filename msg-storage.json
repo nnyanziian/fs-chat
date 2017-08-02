@@ -1,0 +1,15 @@
+{
+    "messages": [
+        {
+            "msgId": 0,
+            "msgSender": "Unknown",
+            "senderId": 0,
+            "messageContent": "No content",
+            "created": {
+                "time": "20:45:46",
+                "date": "12-06-17"
+            },
+            "seen": false
+        }
+    ]
+}

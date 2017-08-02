@@ -1,0 +1,13 @@
+[
+    {
+        "userId": 0,
+        "username": "ian",
+        "userPassword": "nopassword",
+        "userStatus": "Hey i'am on Fs Chat",
+        "created": {
+            "time": "20:45:46",
+            "date": "12-06-17"
+        },
+        "online": false
+    }
+]

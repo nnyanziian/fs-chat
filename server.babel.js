@@ -8,6 +8,7 @@ var io = require('socket.io')(http);
 
 
 
+
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname+'/public'));
 
@@ -49,6 +50,7 @@ io.on('connection', function (socket) {
         //console.log('notification: '+msg.content);
      io.emit('chat not', msg);
     });
+
 
 });
 //.listen(process.env.PORT || 5000)
